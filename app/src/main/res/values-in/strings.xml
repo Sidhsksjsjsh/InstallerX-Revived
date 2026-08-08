@@ -263,7 +263,7 @@
     <string name="installer_uninstalling">Aplikasi Sedang Di Hapus, Jangan Tutup Popup Ini Ya</string>
     <string name="uninstall_authorizer_tip">Uninstall Selalu Menggunakan Set Otorisasi Pada Profil Semula. Dikarena Sistem Keamanan Pada Tiap OEMS/ROMS</string>
     <string name="uninstall_keep_data">Simpan Data Aplikasi</string>
-    <string name="uninstall_keep_data_desc">Data & Cache Aplikasi Ini Akan Tetap Tersimpan</string>
+    <string name="uninstall_keep_data_desc">Data Dan Cache Aplikasi Ini Akan Tetap Tersimpan</string>
     <string name="uninstall_all_users">Untuk All Users</string>
     <string name="uninstall_all_users_desc">Uninstall Aplikasi Ini Untuk Semua Pengguna Di Perangkat ini</string>
     <string name="uninstall_all_users_disabled">Uninstall Untuk Semua Aplikasi Telah Dinonaktifkan</string>
