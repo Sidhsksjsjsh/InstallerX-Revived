@@ -160,8 +160,8 @@ fun MiuixInstallerPage(
         is InstallerStage.InstallConfirm -> stringResource(
             when (stage.requestType) {
                 ConfirmationRequestType.PRE_APPROVAL -> R.string.installer_install_pre_approval
-                ConfirmationRequestType.PERMISSIONS -> "Perizinan" //R.string.installer_permissions_confirm
-                ConfirmationRequestType.INSTALL -> "Gas Install" //R.string.installer_install_confirm
+                ConfirmationRequestType.PERMISSIONS -> R.string.installer_permissions_confirm
+                ConfirmationRequestType.INSTALL -> R.string.installer_install_confirm
             }
         )
         is InstallerStage.Installing -> "Lagi Nginstall Nih, Tunggu Bentar Ya!" //stringResource(R.string.installer_installing)
