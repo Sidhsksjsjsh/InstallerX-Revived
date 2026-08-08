@@ -549,7 +549,7 @@ private fun AboutContentBody(
                 if (uiState.hasUpdate) {
                     Text(
                         modifier = Modifier.padding(top = 4.dp),
-                        text = stringResource("Update Tersedia!", uiState.remoteVersion) //R.string.update_available, uiState.remoteVersion),
+                        text = stringResource("Update Tersedia!", uiState.remoteVersion), //R.string.update_available, uiState.remoteVersion),
                         fontSize = 14.sp,
                         color = MiuixTheme.colorScheme.primary,
                         textAlign = TextAlign.Center

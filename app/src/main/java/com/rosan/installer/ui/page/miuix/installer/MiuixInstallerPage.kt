@@ -169,7 +169,7 @@ fun MiuixInstallerPage(
         is InstallerStage.InstallSuccess -> "Berhasil Install" //stringResource(R.string.installer_install_success)
         is InstallerStage.InstallFailed -> "Woops, Install Gagal" //stringResource(R.string.installer_install_failed)
         is InstallerStage.UninstallReady -> stringResource(
-            if (uiState.uiUninstallInfo?.isArchived == true) "Uninstall Arsip" else "Uninstall Aplikasi" //R.string.uninstall_archive else R.string.installer_uninstall_app
+            if (uiState.uiUninstallInfo?.isArchived == true) R.string.uninstall_archive else R.string.installer_uninstall_app
         )
         is InstallerStage.Uninstalling -> "Uninstalling APK Dari Metadata User" //stringResource(R.string.installer_uninstalling)
         is InstallerStage.UninstallSuccess -> "Uninstall Berhasil Tanpa Ada Masalah" //stringResource(R.string.uninstall_success_message)
