@@ -549,7 +549,7 @@ private fun AboutContentBody(
                 if (uiState.hasUpdate) {
                     Text(
                         modifier = Modifier.padding(top = 4.dp),
-                        text = stringResource("Update Tersedia!", uiState.remoteVersion), //R.string.update_available, uiState.remoteVersion),
+                        text = stringResource(R.string.update_available, uiState.remoteVersion),
                         fontSize = 14.sp,
                         color = MiuixTheme.colorScheme.primary,
                         textAlign = TextAlign.Center
@@ -631,36 +631,13 @@ private fun AboutContentBody(
                             title = stringResource(R.string.get_source_code),
                             description = stringResource(R.string.get_source_code_detail),
                             onClick = {
-                                //uriHandler.openUri("https://github.com/wxxsfxyzm/InstallerX-Revived")
-                                WindowDialog(show = true) {
-                                    BackHandler { /* Block Input */ }
-                                    Row(
-                                        modifier = Modifier.fillMaxWidth(),
-                                        verticalAlignment = Alignment.CenterVertically
-                                    ) {
-                                        InfiniteProgressIndicator()
-                                        Spacer(modifier = Modifier.width(16.dp))
-                                        Text(text = "Aplikasi Ini Adalah Aplikasi Private!") //stringResource(R.string.updating))
-                                    }
-                                }
+                                uriHandler.openUri("https://github.com/wxxsfxyzm/InstallerX-Revived")
                             }
                         )
                         MiuixNavigationItemWidget(
                             title = stringResource(R.string.open_source_license),
                             description = stringResource(R.string.open_source_license_settings_description),
-                            onClick = {
-                                WindowDialog(show = true) {
-                                    BackHandler { /* Block Input */ }
-                                    Row(
-                                        modifier = Modifier.fillMaxWidth(),
-                                        verticalAlignment = Alignment.CenterVertically
-                                    ) {
-                                        InfiniteProgressIndicator()
-                                        Spacer(modifier = Modifier.width(16.dp))
-                                        Text(text = "Lisensi DiTutup") //stringResource(R.string.updating))
-                                    }
-                                }
-                            } //onLicenseClicked
+                            onClick = onLicenseClicked
                         )
                         MiuixNavigationItemWidget(
                             title = stringResource(R.string.get_update),
