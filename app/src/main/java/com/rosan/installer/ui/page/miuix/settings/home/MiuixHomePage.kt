@@ -143,8 +143,12 @@ fun MiuixHomePage(
                 MiuixStatusGrid(
                     uiState = uiState,
                     configCount = configCount,
-                    onInstallerClick = { navigator.push(Route.DefaultInstaller) },
-                    onAuthorizersClick = { navigator.push(Route.Priv) },
+                    onInstallerClick = {
+                        navigator.push(Route.DefaultInstaller)
+                    },
+                    onAuthorizersClick = {
+                        navigator.push(Route.Priv)
+                    },
                     onProfilesClick = onNavigateToProfiles
                 )
             }
@@ -153,7 +157,7 @@ fun MiuixHomePage(
                 Card(modifier = Modifier.padding(vertical = 12.dp)) {
                     BasicComponent(
                         title = stringResource(R.string.home_device_info_model),
-                        summary = uiState.deviceName
+                        summary = "Meizu" //uiState.deviceName
                     )
                     BasicComponent(
                         title = stringResource(R.string.home_device_info_system),
@@ -192,8 +196,8 @@ fun MiuixHomePage(
                         else -> stringResource(uiState.globalAuthorizer.displayNameRes)
                     }
                     BasicComponent(
-                        title = stringResource(R.string.home_device_info_active_authorizer),
-                        summary = authorizerText
+                        title = "Root (KernelSU)", //stringResource(R.string.home_device_info_active_authorizer),
+                        summary = "Root (KernelSU)" //authorizerText
                     )
                     BasicComponent(
                         title = stringResource(R.string.home_device_info_default_installer),

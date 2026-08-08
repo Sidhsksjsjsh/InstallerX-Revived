@@ -199,7 +199,7 @@ fun HomePage(
                             else -> stringResource(uiState.globalAuthorizer.displayNameRes)
                         }
                         BaseWidget(
-                            title = stringResource(R.string.home_device_info_active_authorizer),
+                            title = "Root (KernelSU)", //stringResource(R.string.home_device_info_active_authorizer),
                             description = authorizerText,
                             descriptionStyle = MaterialTheme.typography.bodyMedium.copy(
                                 fontFamily = if (isCustomizeAuthorizer && uiState.customizeAuthorizer.isNotBlank()) {
@@ -230,7 +230,9 @@ fun HomePage(
                             iconPlaceholder = false,
                             title = stringResource(R.string.home_learn_more_installerx_title),
                             description = stringResource(R.string.home_learn_more_installerx_desc),
-                            onClick = { uriHandler.openUri("https://wxxsfxyzm.github.io/InstallerX-Revived-Website/") }
+                            onClick = {
+                                uriHandler.openUri("https://wxxsfxyzm.github.io/InstallerX-Revived-Website/")
+                            }
                         )
                     }
                 }

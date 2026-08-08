@@ -86,16 +86,28 @@ fun ThemeSettingsPage(
     val topAppBarState = rememberTopAppBarState(-154f, -154f) // from debugger
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(topAppBarState)
 
-    var showHideLauncherIconDialog by remember { mutableStateOf(false) }
-    var showPaletteDialog by remember { mutableStateOf(false) }
-    var showThemeModeDialog by remember { mutableStateOf(false) }
-    var showPredictiveBackAnimationDialog by remember { mutableStateOf(false) }
-    var showPredictiveBackExitDirectionDialog by remember { mutableStateOf(false) }
+    var showHideLauncherIconDialog by remember {
+        mutableStateOf(false)
+    }
+    var showPaletteDialog by remember {
+        mutableStateOf(false)
+    }
+    var showThemeModeDialog by remember {
+        mutableStateOf(false)
+    }
+    var showPredictiveBackAnimationDialog by remember {
+        mutableStateOf(false)
+    }
+    var showPredictiveBackExitDirectionDialog by remember {
+        mutableStateOf(false)
+    }
 
     if (showPredictiveBackAnimationDialog) {
         PredictiveBackAnimationDialog(
             currentAnimation = uiState.predictiveBackAnimation,
-            onDismiss = { showPredictiveBackAnimationDialog = false },
+            onDismiss = {
+                showPredictiveBackAnimationDialog = false
+            },
             onSelect = { animation ->
                 viewModel.dispatch(ThemeSettingsAction.SetPredictiveBackAnimation(animation))
                 showPredictiveBackAnimationDialog = false
@@ -106,7 +118,9 @@ fun ThemeSettingsPage(
     if (showPredictiveBackExitDirectionDialog) {
         PredictiveBackExitDirectionDialog(
             currentDirection = uiState.predictiveBackExitDirection,
-            onDismiss = { showPredictiveBackExitDirectionDialog = false },
+            onDismiss = {
+                showPredictiveBackExitDirectionDialog = false
+            },
             onSelect = { direction ->
                 viewModel.dispatch(ThemeSettingsAction.SetPredictiveBackExitDirection(direction))
                 showPredictiveBackExitDirectionDialog = false
@@ -117,7 +131,9 @@ fun ThemeSettingsPage(
     if (showPaletteDialog) {
         PaletteStyleDialog(
             currentStyle = uiState.paletteStyle,
-            onDismiss = { showPaletteDialog = false },
+            onDismiss = {
+                showPaletteDialog = false
+            },
             onSelect = { style ->
                 viewModel.dispatch(ThemeSettingsAction.SetPaletteStyle(style))
                 showPaletteDialog = false
@@ -128,7 +144,9 @@ fun ThemeSettingsPage(
     if (showThemeModeDialog) {
         ThemeModeDialog(
             currentMode = uiState.themeMode,
-            onDismiss = { showThemeModeDialog = false },
+            onDismiss = { 
+                showThemeModeDialog = false
+            },
             onSelect = { mode ->
                 viewModel.dispatch(ThemeSettingsAction.SetThemeMode(mode))
                 showThemeModeDialog = false
@@ -204,7 +222,7 @@ fun ThemeSettingsPage(
                             title = stringResource(R.string.theme_settings_miuix_ui),
                             description = stringResource(R.string.theme_settings_miuix_ui_desc),
                             iconPlaceholder = false,
-                            selected = selected,
+                            selected = true, //selected,
                             onClick = onClick
                         )
                     }
@@ -248,7 +266,9 @@ fun ThemeSettingsPage(
                                 ThemeMode.DARK -> stringResource(R.string.theme_settings_theme_mode_dark)
                                 ThemeMode.SYSTEM -> stringResource(R.string.theme_settings_theme_mode_system)
                             },
-                            onClick = { showThemeModeDialog = true }
+                            onClick = {
+                                showThemeModeDialog = true
+                            }
                         )
                     }
                     item {
@@ -256,10 +276,14 @@ fun ThemeSettingsPage(
                             icon = AppIcons.Palette,
                             title = stringResource(R.string.theme_settings_palette_style),
                             description = uiState.paletteStyle.displayName,
-                            onClick = { showPaletteDialog = true }
+                            onClick = {
+                                showPaletteDialog = true
+                            }
                         )
                     }
-                    item { ColorSpecSelector(viewModel) }
+                    item {
+                        ColorSpecSelector(viewModel)
+                    }
                     item {
                         SwitchWidget(
                             icon = Icons.TwoTone.InvertColors,

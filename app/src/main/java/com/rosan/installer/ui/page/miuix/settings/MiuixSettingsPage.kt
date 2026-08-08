@@ -89,7 +89,9 @@ private fun SettingsFloatingBottomBar(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .clickable(
-                    interactionSource = remember { MutableInteractionSource() },
+                    interactionSource = remember {
+                        MutableInteractionSource()
+                    },
                     indication = null,
                     onClick = {},
                 )
@@ -196,7 +198,9 @@ fun SettingsCompactLayout(
                 }
             }
         },
-        snackbarHost = { SnackbarHost(state = snackbarHostState) },
+        snackbarHost = {
+            SnackbarHost(state = snackbarHostState)
+        },
         floatingActionButton = {
             AnimatedVisibility(
                 visible = mainPagerState.selectedPage == 1,
@@ -346,7 +350,9 @@ private fun SettingsWideContent(
                 )
             }
         },
-        snackbarHost = { SnackbarHost(state = snackbarHostState) },
+        snackbarHost = {
+            SnackbarHost(state = snackbarHostState)
+        },
         floatingActionButton = {
             AnimatedVisibility(
                 visible = mainPagerState.selectedPage == 1,

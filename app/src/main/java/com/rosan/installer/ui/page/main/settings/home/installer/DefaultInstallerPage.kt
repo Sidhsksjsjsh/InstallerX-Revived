@@ -181,7 +181,9 @@ fun DefaultInstallerPage(
                             title = stringResource(R.string.lock_default_installer),
                             description = stringResource(R.string.lock_default_installer_desc),
                             enabled = defaultInstallerActionsEnabled,
-                            onClick = { dispatchSetDefaultInstaller(true) }
+                            onClick = {
+                                dispatchSetDefaultInstaller(true)
+                            }
                         )
                     }
                     item {
@@ -192,7 +194,9 @@ fun DefaultInstallerPage(
                             description =
                                 stringResource(R.string.unlock_default_installer_desc),
                             enabled = defaultInstallerActionsEnabled,
-                            onClick = { dispatchSetDefaultInstaller(false) }
+                            onClick = {
+                                dispatchSetDefaultInstaller(false)
+                            }
                         )
                     }
                 }
@@ -265,7 +269,9 @@ fun DefaultInstallerPage(
     errorDialogInfo?.let { dialogInfo ->
         ErrorDisplayDialog(
             exception = dialogInfo.exception,
-            onDismissRequest = { errorDialogInfo = null },
+            onDismissRequest = {
+                errorDialogInfo = null
+            },
             onRetry = {
                 errorDialogInfo = null
                 val action = dialogInfo.retryAction

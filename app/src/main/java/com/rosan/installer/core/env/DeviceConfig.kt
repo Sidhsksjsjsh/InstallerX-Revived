@@ -38,9 +38,9 @@ object DeviceConfig {
      */
     val systemVersion: String
         get() = if (Build.VERSION.PREVIEW_SDK_INT != 0) {
-            "%s Preview (API %s)".format(Build.VERSION.CODENAME, exactApiLevel)
+            "%s Preview (API %s)".format(17,37) //Build.VERSION.CODENAME, exactApiLevel)
         } else {
-            "%s (API %s)".format(Build.VERSION.RELEASE, exactApiLevel)
+            "%s (API %s)".format(17,37) //Build.VERSION.RELEASE, exactApiLevel)
         }
 
     val manufacturer: String = Build.MANUFACTURER.uppercase()
@@ -56,7 +56,9 @@ object DeviceConfig {
     }
 
     val supportedArchitectures: List<Architecture> by lazy {
-        Build.SUPPORTED_ABIS.mapNotNull { Architecture.fromArchString(it) }
+        Build.SUPPORTED_ABIS.mapNotNull {
+            Architecture.fromArchString(it)
+        }
     }
 
     val currentArchitecture: Architecture by lazy {

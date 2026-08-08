@@ -139,10 +139,18 @@ fun MiuixAboutPage(
     viewModel: AboutViewModel = koinViewModel()
 ) {
     val uiState by viewModel.state.collectAsStateWithLifecycle()
-    val showUpdateDialog = remember { mutableStateOf(false) }
-    val showLoadingDialog = remember { mutableStateOf(false) }
-    val showUpdateErrorDialog = remember { mutableStateOf(false) }
-    var updateErrorInfo by remember { mutableStateOf<AboutEvent.ShowInAppUpdateErrorDetail?>(null) }
+    val showUpdateDialog = remember {
+        mutableStateOf(false)
+    }
+    val showLoadingDialog = remember {
+        mutableStateOf(false)
+    }
+    val showUpdateErrorDialog = remember {
+        mutableStateOf(false)
+    }
+    var updateErrorInfo by remember {
+        mutableStateOf<AboutEvent.ShowInAppUpdateErrorDetail?>(null)
+    }
 
     LogEventCollector(viewModel)
 
@@ -172,7 +180,9 @@ fun MiuixAboutPage(
     // Hoisted common dialogs
     MiuixUpdateDialog(
         showState = showUpdateDialog,
-        onDismiss = { showUpdateDialog.value = false }
+        onDismiss = {
+            showUpdateDialog.value = false
+        }
     )
 
     WindowDialog(show = showLoadingDialog.value) {
@@ -183,7 +193,7 @@ fun MiuixAboutPage(
         ) {
             InfiniteProgressIndicator()
             Spacer(modifier = Modifier.width(16.dp))
-            Text(text = stringResource(R.string.updating))
+            Text(text = "Updating") //stringResource(R.string.updating))
         }
     }
 
@@ -215,9 +225,9 @@ private fun MiuixAboutPageInternal(
     else stringResource(R.string.internet_access_disabled)
 
     val level = when (AppConfig.LEVEL) {
-        Level.STABLE -> stringResource(id = R.string.stable)
-        Level.PREVIEW -> stringResource(id = R.string.preview)
-        Level.UNSTABLE -> stringResource(id = R.string.unstable)
+        Level.STABLE -> "Stabil" //stringResource(id = R.string.stable)
+        Level.PREVIEW -> "Preview" //stringResource(id = R.string.preview)
+        Level.UNSTABLE -> "Experimental" //stringResource(id = R.string.unstable)
     }
 
     val versionInfoText = stringResource(
@@ -233,7 +243,9 @@ private fun MiuixAboutPageInternal(
     // Scroll state and progress calculations for animations
     val lazyListState = rememberLazyListState()
     val topAppBarScrollBehavior = MiuixScrollBehavior()
-    var logoHeightPx by remember { mutableIntStateOf(0) }
+    var logoHeightPx by remember {
+        mutableIntStateOf(0)
+    }
 
     val scrollProgress by remember {
         derivedStateOf {
@@ -254,7 +266,7 @@ private fun MiuixAboutPageInternal(
                     backdrop = topBarBackdrop,
                     enabled = scrollProgress == 1f,
                 ),
-                title = stringResource(id = R.string.about),
+                title = "Tentang Projek Ini.", //stringResource(id = R.string.about),
                 scrollBehavior = topAppBarScrollBehavior,
                 color = if (topBarBackdrop != null && scrollProgress == 1f) {
                     Color.Transparent
@@ -263,7 +275,11 @@ private fun MiuixAboutPageInternal(
                 },
                 titleColor = MiuixTheme.colorScheme.onSurface.copy(alpha = scrollProgress),
                 defaultWindowInsetsPadding = false,
-                navigationIcon = { MiuixBackButton(onClick = { navigator.pop() }) }
+                navigationIcon = {
+                    MiuixBackButton(onClick = {
+                        navigator.pop()
+                    })
+                }
             )
         },
     ) { innerPadding ->
@@ -273,15 +289,27 @@ private fun MiuixAboutPageInternal(
                 uiState = uiState,
                 versionInfoText = versionInfoText,
                 lazyListState = lazyListState,
-                scrollProgressProvider = { scrollProgress },
+                scrollProgressProvider = {
+                    scrollProgress
+                },
                 useBlur = blurSupported,
                 topAppBarScrollBehavior = topAppBarScrollBehavior,
-                onLogoHeightChanged = { logoHeightPx = it },
+                onLogoHeightChanged = {
+                    logoHeightPx = it
+                },
                 onGetUpdateClicked = onShowUpdateDialog,
-                onDirectUpdateClicked = { viewModel.dispatch(AboutAction.PerformUpdate) },
-                onLicenseClicked = { navigator.push(Route.OpenSourceLicense) },
-                onLogToggle = { viewModel.dispatch(AboutAction.SetEnableFileLogging(it)) },
-                onLogExport = { viewModel.dispatch(AboutAction.ShareLog) },
+                onDirectUpdateClicked = {
+                    viewModel.dispatch(AboutAction.PerformUpdate)
+                },
+                onLicenseClicked = {
+                    navigator.push(Route.OpenSourceLicense)
+                },
+                onLogToggle = {
+                    viewModel.dispatch(AboutAction.SetEnableFileLogging(it))
+                },
+                onLogExport = {
+                    viewModel.dispatch(AboutAction.ShareLog)
+                },
                 uriHandler = uriHandler,
                 context = context
             )
@@ -311,17 +339,37 @@ private fun AboutContentBody(
     val isDark = InstallerTheme.isDark
 
     // Texture set states
-    var showTextureSet by remember { mutableStateOf(false) }
-    var blurEnable by remember(useBlur) { mutableStateOf(useBlur) }
-    val dynamicBackground = remember { mutableStateOf(isRuntimeShaderSupported()) }
-    val effectBackground = remember { mutableStateOf(isRuntimeShaderSupported()) }
-    var isOs3Effect by remember { mutableStateOf(true) }
+    var showTextureSet by remember {
+        mutableStateOf(false)
+    }
+    var blurEnable by remember(useBlur) {
+        mutableStateOf(useBlur)
+    }
+    val dynamicBackground = remember {
+        mutableStateOf(isRuntimeShaderSupported())
+    }
+    val effectBackground = remember {
+        mutableStateOf(isRuntimeShaderSupported())
+    }
+    var isOs3Effect by remember {
+        mutableStateOf(true)
+    }
 
-    var blurRadius by remember { mutableFloatStateOf(60f) }
-    var noiseCoefficient by remember { mutableFloatStateOf(BlurDefaults.NoiseCoefficient) }
-    var brightness by remember { mutableFloatStateOf(0f) }
-    var contrast by remember { mutableFloatStateOf(1f) }
-    var saturation by remember { mutableFloatStateOf(1f) }
+    var blurRadius by remember {
+        mutableFloatStateOf(60f)
+    }
+    var noiseCoefficient by remember {
+        mutableFloatStateOf(BlurDefaults.NoiseCoefficient)
+    }
+    var brightness by remember {
+        mutableFloatStateOf(0f)
+    }
+    var contrast by remember {
+        mutableFloatStateOf(1f)
+    }
+    var saturation by remember {
+        mutableFloatStateOf(1f)
+    }
 
     val backdrop = rememberMiuixBlurBackdrop(useBlur)
     val surface = MiuixTheme.colorScheme.surface.copy(alpha = 0.6f)
@@ -350,7 +398,9 @@ private fun AboutContentBody(
     }
 
     val configEntries = blendConfigs.entries.toList()
-    var blendModeIndex by remember { mutableIntStateOf(0) }
+    var blendModeIndex by remember {
+        mutableIntStateOf(0)
+    }
     val currentConfigValue = configEntries.getOrNull(blendModeIndex)?.value ?: emptyList()
 
     val logoBlend = remember(isDark) {
@@ -371,7 +421,9 @@ private fun AboutContentBody(
 
     // Layout state
     val density = LocalDensity.current
-    var logoHeightDp by remember { mutableStateOf(300.dp) }
+    var logoHeightDp by remember {
+        mutableStateOf(300.dp)
+    }
     val displayCutoutInsets = WindowInsets.displayCutout.asPaddingValues()
     val horizontalSafeInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal).asPaddingValues()
 
@@ -394,7 +446,9 @@ private fun AboutContentBody(
         modifier = Modifier.fillMaxSize(),
         bgModifier = backdrop?.let { Modifier.layerBackdrop(it) } ?: Modifier,
         effectBackground = effectBackground.value,
-        alpha = { 1f - scrollProgressProvider() },
+        alpha = {
+            1f - scrollProgressProvider()
+        },
     ) {
         // Sticky animated header section
         Column(
@@ -495,7 +549,7 @@ private fun AboutContentBody(
                 if (uiState.hasUpdate) {
                     Text(
                         modifier = Modifier.padding(top = 4.dp),
-                        text = stringResource(R.string.update_available, uiState.remoteVersion),
+                        text = stringResource("Update Tersedia!", uiState.remoteVersion) //R.string.update_available, uiState.remoteVersion),
                         fontSize = 14.sp,
                         color = MiuixTheme.colorScheme.primary,
                         textAlign = TextAlign.Center
@@ -576,12 +630,37 @@ private fun AboutContentBody(
                         MiuixNavigationItemWidget(
                             title = stringResource(R.string.get_source_code),
                             description = stringResource(R.string.get_source_code_detail),
-                            onClick = { uriHandler.openUri("https://github.com/wxxsfxyzm/InstallerX-Revived") }
+                            onClick = {
+                                //uriHandler.openUri("https://github.com/wxxsfxyzm/InstallerX-Revived")
+                                WindowDialog(show = true) {
+                                    BackHandler { /* Block Input */ }
+                                    Row(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        verticalAlignment = Alignment.CenterVertically
+                                    ) {
+                                        InfiniteProgressIndicator()
+                                        Spacer(modifier = Modifier.width(16.dp))
+                                        Text(text = "Aplikasi Ini Adalah Aplikasi Private!") //stringResource(R.string.updating))
+                                    }
+                                }
+                            }
                         )
                         MiuixNavigationItemWidget(
                             title = stringResource(R.string.open_source_license),
                             description = stringResource(R.string.open_source_license_settings_description),
-                            onClick = onLicenseClicked
+                            onClick = {
+                                WindowDialog(show = true) {
+                                    BackHandler { /* Block Input */ }
+                                    Row(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        verticalAlignment = Alignment.CenterVertically
+                                    ) {
+                                        InfiniteProgressIndicator()
+                                        Spacer(modifier = Modifier.width(16.dp))
+                                        Text(text = "Lisensi DiTutup") //stringResource(R.string.updating))
+                                    }
+                                }
+                            } //onLicenseClicked
                         )
                         MiuixNavigationItemWidget(
                             title = stringResource(R.string.get_update),
@@ -598,7 +677,7 @@ private fun AboutContentBody(
                     }
 
                     if (AppConfig.isLogEnabled && context.packageName == BuildConfig.APPLICATION_ID) {
-                        SmallTitle(stringResource(R.string.debug))
+                        SmallTitle("Developer Debugging") //stringResource(R.string.debug))
                         Card(
                             modifier = Modifier
                                 .padding(horizontal = 12.dp)
@@ -664,7 +743,7 @@ private fun AboutContentBody(
     if (AppConfig.LEVEL != Level.STABLE) {
         WindowBottomSheet(
             show = showTextureSet,
-            title = "Texture Set",
+            title = "Penyesuaian Tekstur",
             onDismissRequest = {
                 showTextureSet = false
             },
@@ -779,11 +858,15 @@ private fun AboutContentBody(
                     // Blur radius setting
                     BasicComponent(
                         title = "Blur Radius",
-                        endActions = { ValueText("${blurRadius.toInt()}") },
+                        endActions = {
+                            ValueText("${blurRadius.toInt()}")
+                        },
                         bottomAction = {
                             Slider(
                                 value = blurRadius / 200f,
-                                onValueChange = { blurRadius = it * 200f },
+                                onValueChange = {
+                                    blurRadius = it * 200f
+                                },
                             )
                         },
                         insideMargin = PaddingValues(16.dp, 16.dp, 16.dp, 0.dp),
@@ -793,11 +876,15 @@ private fun AboutContentBody(
                     // Noise setting
                     BasicComponent(
                         title = "Noise",
-                        endActions = { ValueText("${(noiseCoefficient * 10000).toInt() / 10000f}") },
+                        endActions = {
+                            ValueText("${(noiseCoefficient * 10000).toInt() / 10000f}")
+                        },
                         bottomAction = {
                             Slider(
                                 value = noiseCoefficient / 0.1f,
-                                onValueChange = { noiseCoefficient = it * 0.1f },
+                                onValueChange = {
+                                    noiseCoefficient = it * 0.1f
+                                },
                             )
                         },
                         insideMargin = PaddingValues(16.dp, 16.dp, 16.dp, 0.dp),
@@ -807,11 +894,15 @@ private fun AboutContentBody(
                     // Brightness setting
                     BasicComponent(
                         title = "Brightness",
-                        endActions = { ValueText("${(brightness * 100).toInt() / 100f}") },
+                        endActions = {
+                            ValueText("${(brightness * 100).toInt() / 100f}")
+                        },
                         bottomAction = {
                             Slider(
                                 value = (brightness + 1f) / 2f,
-                                onValueChange = { brightness = it * 2f - 1f },
+                                onValueChange = {
+                                    brightness = it * 2f - 1f
+                                },
                             )
                         },
                         insideMargin = PaddingValues(16.dp, 16.dp, 16.dp, 0.dp),
@@ -821,11 +912,15 @@ private fun AboutContentBody(
                     // Contrast setting
                     BasicComponent(
                         title = "Contrast",
-                        endActions = { ValueText("${(contrast * 100).toInt() / 100f}") },
+                        endActions = {
+                            ValueText("${(contrast * 100).toInt() / 100f}")
+                        },
                         bottomAction = {
                             Slider(
                                 value = contrast / 3f,
-                                onValueChange = { contrast = it * 3f },
+                                onValueChange = {
+                                    contrast = it * 3f
+                                },
                             )
                         },
                         insideMargin = PaddingValues(16.dp, 16.dp, 16.dp, 0.dp),
@@ -835,11 +930,15 @@ private fun AboutContentBody(
                     // Saturation setting
                     BasicComponent(
                         title = "Saturation",
-                        endActions = { ValueText("${(saturation * 100).toInt() / 100f}") },
+                        endActions = {
+                            ValueText("${(saturation * 100).toInt() / 100f}")
+                        },
                         bottomAction = {
                             Slider(
                                 value = saturation / 3f,
-                                onValueChange = { saturation = it * 3f },
+                                onValueChange = {
+                                    saturation = it * 3f
+                                },
                             )
                         },
                         insideMargin = PaddingValues(16.dp, 16.dp, 16.dp, 0.dp),

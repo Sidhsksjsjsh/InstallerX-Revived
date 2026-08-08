@@ -158,9 +158,9 @@ fun MiuixUpdateDialog(
                         }
                     )
                     BasicComponent(
-                        title = "Telegram",
+                        title = "Telegram (Unavailable)",
                         onClick = {
-                            uriHandler.openUri("https://t.me/installerx_revived")
+                            //uriHandler.openUri("https://t.me/installerx_revived")
                             onDismiss()
                         },
                         endActions = {
@@ -345,7 +345,9 @@ fun MiuixRootImplementationDialog(
         )
     }
 
-    var selectedImpl by remember { mutableStateOf(rootModes.first()) }
+    var selectedImpl by remember {
+        mutableStateOf(rootModes.first())
+    }
 
     WindowDialog(
         show = showState.value,
@@ -503,7 +505,9 @@ fun MiuixGithubUpdateChannelSelectionDialog(
         )
     }
 
-    var selectedChannel by remember { mutableStateOf(currentSelection) }
+    var selectedChannel by remember {
+        mutableStateOf(currentSelection)
+    }
 
     WindowDialog(
         show = showState.value,

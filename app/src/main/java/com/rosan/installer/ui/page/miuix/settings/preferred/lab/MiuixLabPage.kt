@@ -98,16 +98,26 @@ fun MiuixLabPage(
     val dhizukuAvailable by capabilityProvider.dhizukuAvailableFlow.collectAsStateWithLifecycle()
     val dhizukuAuthorized by capabilityProvider.dhizukuAuthorizedFlow.collectAsStateWithLifecycle()
     val scrollBehavior = MiuixScrollBehavior()
-    val showRootImplementationDialog = remember { mutableStateOf(false) }
-    val showChannelDialog = remember { mutableStateOf(false) }
-    val showCustomProxyDialog = remember { mutableStateOf(false) }
-    val showSmartAuthorizerSheet = remember { mutableStateOf(false) }
+    val showRootImplementationDialog = remember {
+        mutableStateOf(false)
+    }
+    val showChannelDialog = remember {
+        mutableStateOf(false)
+    }
+    val showCustomProxyDialog = remember {
+        mutableStateOf(false)
+    }
+    val showSmartAuthorizerSheet = remember {
+        mutableStateOf(false)
+    }
 
     if (showChannelDialog.value)
         MiuixGithubUpdateChannelSelectionDialog(
             showState = showChannelDialog,
             currentSelection = uiState.githubUpdateChannel,
-            onDismiss = { showChannelDialog.value = false },
+            onDismiss = {
+                showChannelDialog.value = false
+            },
             onConfirm = { channel ->
                 showChannelDialog.value = false
                 viewModel.dispatch(LabSettingsAction.LabChangeGithubUpdateChannel(channel))
@@ -135,7 +145,9 @@ fun MiuixLabPage(
 
     MiuixRootImplementationDialog(
         showState = showRootImplementationDialog,
-        onDismiss = { showRootImplementationDialog.value = false },
+        onDismiss = {
+            showRootImplementationDialog.value = false
+        },
         onConfirm = { selectedImplementation ->
             // When the user confirms, dismiss the dialog.
             showRootImplementationDialog.value = false
@@ -162,7 +174,9 @@ fun MiuixLabPage(
                 color = topBarBackdrop.getMiuixAppBarColor(),
                 title = stringResource(R.string.lab),
                 navigationIcon = {
-                    MiuixBackButton(onClick = { navigator.pop() })
+                    MiuixBackButton(onClick = {
+                        navigator.pop()
+                    })
                 },
                 scrollBehavior = scrollBehavior
             )
@@ -182,9 +196,15 @@ fun MiuixLabPage(
             ),
             overscrollEffect = null
         ) {
-            item { MiuixSettingsTipCard(stringResource(R.string.lab_tip)) }
-            item { Spacer(modifier = Modifier.size(12.dp)) }
-            item { SmallTitle(stringResource(R.string.config_authorizer)) }
+            item {
+                MiuixSettingsTipCard("Area Khusus HP Root!") //stringResource(R.string.lab_tip))
+            }
+            item {
+                Spacer(modifier = Modifier.size(12.dp))
+            }
+            item {
+                SmallTitle(stringResource(R.string.config_authorizer))
+            }
             item {
                 Card(
                     modifier = Modifier
@@ -220,7 +240,9 @@ fun MiuixLabPage(
                     }
                 }
             }
-            item { SmallTitle(stringResource(R.string.config_authorizer_root)) }
+            item {
+                SmallTitle(stringResource(R.string.config_authorizer_root))
+            }
             item {
                 Card(
                     modifier = Modifier
