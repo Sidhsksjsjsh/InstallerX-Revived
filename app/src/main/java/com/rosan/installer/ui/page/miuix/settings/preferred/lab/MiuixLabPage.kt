@@ -197,7 +197,7 @@ fun MiuixLabPage(
             overscrollEffect = null
         ) {
             item {
-                MiuixSettingsTipCard("Area Khusus HP Root!") //stringResource(R.string.lab_tip))
+                MiuixSettingsTipCard(stringResource(R.string.lab_tip))
             }
             item {
                 Spacer(modifier = Modifier.size(12.dp))

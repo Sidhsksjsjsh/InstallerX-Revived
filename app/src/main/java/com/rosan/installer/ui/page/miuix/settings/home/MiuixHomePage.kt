@@ -196,8 +196,8 @@ fun MiuixHomePage(
                         else -> stringResource(uiState.globalAuthorizer.displayNameRes)
                     }
                     BasicComponent(
-                        title = "Root (KernelSU)", //stringResource(R.string.home_device_info_active_authorizer),
-                        summary = "Root (KernelSU)" //authorizerText
+                        title = stringResource(R.string.home_device_info_active_authorizer),
+                        summary = authorizerText
                     )
                     BasicComponent(
                         title = stringResource(R.string.home_device_info_default_installer),

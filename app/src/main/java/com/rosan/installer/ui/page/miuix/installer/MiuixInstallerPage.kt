@@ -138,8 +138,8 @@ fun MiuixInstallerPage(
     InstallerEventCollector(viewModel)
 
     val sheetTitle = when (stage) {
-        is InstallerStage.Preparing -> "Lagi Menyiapkan Sesuatu" //stringResource(R.string.installer_preparing)
-        is InstallerStage.InstallWaitingUnknownSource -> "Sedang Menunggu APK Yang Berstatus 'Unknown'" //stringResource(R.string.installer_waiting_unknown_source)
+        is InstallerStage.Preparing -> stringResource(R.string.installer_preparing)
+        is InstallerStage.InstallWaitingUnknownSource -> stringResource(R.string.installer_waiting_unknown_source)
         is InstallerStage.InstallChoice -> sourceType.getSupportTitle()
         is InstallerStage.InstallExtendedMenu -> stringResource(R.string.config_label_install_options)
         is InstallerStage.InstallPrepare -> when {
@@ -152,9 +152,9 @@ fun MiuixInstallerPage(
         }
 
         is InstallerStage.InstallingModule -> if (stage.isFinished) {
-            "Install Selesai." //stringResource(R.string.installer_install_complete)
+            stringResource(R.string.installer_install_complete)
         } else {
-            "Sedang Mengunduh Beberapa Modul Untuk Metadata APK Ini" //stringResource(R.string.installer_installing_module)
+            stringResource(R.string.installer_installing_module)
         }
 
         is InstallerStage.InstallConfirm -> stringResource(
@@ -164,25 +164,25 @@ fun MiuixInstallerPage(
                 ConfirmationRequestType.INSTALL -> R.string.installer_install_confirm
             }
         )
-        is InstallerStage.Installing -> "Lagi Nginstall Nih, Tunggu Bentar Ya!" //stringResource(R.string.installer_installing)
-        is InstallerStage.InstallCompleted -> "Hebat, Penginstallan Selesai Tanpa Masalah!" //stringResource(R.string.installer_install_success)
-        is InstallerStage.InstallSuccess -> "Berhasil Install" //stringResource(R.string.installer_install_success)
-        is InstallerStage.InstallFailed -> "Woops, Install Gagal" //stringResource(R.string.installer_install_failed)
+        is InstallerStage.Installing -> stringResource(R.string.installer_installing)
+        is InstallerStage.InstallCompleted -> stringResource(R.string.installer_install_success)
+        is InstallerStage.InstallSuccess -> stringResource(R.string.installer_install_success)
+        is InstallerStage.InstallFailed -> stringResource(R.string.installer_install_failed)
         is InstallerStage.UninstallReady -> stringResource(
             if (uiState.uiUninstallInfo?.isArchived == true) R.string.uninstall_archive else R.string.installer_uninstall_app
         )
-        is InstallerStage.Uninstalling -> "Uninstalling APK Dari Metadata User" //stringResource(R.string.installer_uninstalling)
-        is InstallerStage.UninstallSuccess -> "Uninstall Berhasil Tanpa Ada Masalah" //stringResource(R.string.uninstall_success_message)
-        is InstallerStage.UninstallFailed -> "Woops, Gagal Uninstall" //stringResource(R.string.uninstall_failed_message)
-        is InstallerStage.UnarchiveReady -> "Arsip Siap Dibuka!" //stringResource(R.string.unarchive_restore)
-        is InstallerStage.Unarchiving -> "Ngebuka Arsip... Mohon Nunggu Sebentar Ya!" //stringResource(R.string.unarchive_restoring)
+        is InstallerStage.Uninstalling -> stringResource(R.string.installer_uninstalling)
+        is InstallerStage.UninstallSuccess -> stringResource(R.string.uninstall_success_message)
+        is InstallerStage.UninstallFailed -> stringResource(R.string.uninstall_failed_message)
+        is InstallerStage.UnarchiveReady -> stringResource(R.string.unarchive_restore)
+        is InstallerStage.Unarchiving -> stringResource(R.string.unarchive_restoring)
         is InstallerStage.UnarchiveError -> unarchiveErrorTitle(stage.status, stage.installerLabel)
-        is InstallerStage.UnarchiveFailed -> "Woops, Gagal Ngebuka Arsil" //stringResource(R.string.unarchive_failed)
-        is InstallerStage.AnalyseFailed -> "Analisis Gagal" //stringResource(R.string.installer_analyse_failed)
-        is InstallerStage.ResolveFailed -> "Woops, Gagal Ngeresolve! :(" //stringResource(R.string.installer_resolve_failed)
-        is InstallerStage.Resolving -> "Mohon Bentar Ya... Sistem Lagi Nyelesaikan Sesuatu Duluu >_•" //stringResource(R.string.installer_resolving)
-        is InstallerStage.Analysing -> "Menganalisis... Bentar Ya" //stringResource(R.string.installer_analysing)
-        else -> "Memuat APK/Resource..." //stringResource(R.string.loading)
+        is InstallerStage.UnarchiveFailed -> stringResource(R.string.unarchive_failed)
+        is InstallerStage.AnalyseFailed -> stringResource(R.string.installer_analyse_failed)
+        is InstallerStage.ResolveFailed -> stringResource(R.string.installer_resolve_failed)
+        is InstallerStage.Resolving -> stringResource(R.string.installer_resolving)
+        is InstallerStage.Analysing -> stringResource(R.string.installer_analysing)
+        else -> stringResource(R.string.loading)
     }
 
     fun dismissSheet(afterDismiss: () -> Unit) {

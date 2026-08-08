@@ -193,7 +193,7 @@ fun MiuixAboutPage(
         ) {
             InfiniteProgressIndicator()
             Spacer(modifier = Modifier.width(16.dp))
-            Text(text = "Updating") //stringResource(R.string.updating))
+            Text(text = stringResource(R.string.updating))
         }
     }
 
@@ -225,9 +225,9 @@ private fun MiuixAboutPageInternal(
     else stringResource(R.string.internet_access_disabled)
 
     val level = when (AppConfig.LEVEL) {
-        Level.STABLE -> "Stabil" //stringResource(id = R.string.stable)
-        Level.PREVIEW -> "Preview" //stringResource(id = R.string.preview)
-        Level.UNSTABLE -> "Experimental" //stringResource(id = R.string.unstable)
+        Level.STABLE -> stringResource(id = R.string.stable)
+        Level.PREVIEW -> stringResource(id = R.string.preview)
+        Level.UNSTABLE -> stringResource(id = R.string.unstable)
     }
 
     val versionInfoText = stringResource(
@@ -266,7 +266,7 @@ private fun MiuixAboutPageInternal(
                     backdrop = topBarBackdrop,
                     enabled = scrollProgress == 1f,
                 ),
-                title = "Tentang Projek Ini.", //stringResource(id = R.string.about),
+                title = stringResource(id = R.string.about),
                 scrollBehavior = topAppBarScrollBehavior,
                 color = if (topBarBackdrop != null && scrollProgress == 1f) {
                     Color.Transparent
@@ -654,7 +654,7 @@ private fun AboutContentBody(
                     }
 
                     if (AppConfig.isLogEnabled && context.packageName == BuildConfig.APPLICATION_ID) {
-                        SmallTitle("Developer Debugging") //stringResource(R.string.debug))
+                        SmallTitle(stringResource(R.string.debug))
                         Card(
                             modifier = Modifier
                                 .padding(horizontal = 12.dp)

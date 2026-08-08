@@ -199,7 +199,7 @@ fun HomePage(
                             else -> stringResource(uiState.globalAuthorizer.displayNameRes)
                         }
                         BaseWidget(
-                            title = "Root (KernelSU)", //stringResource(R.string.home_device_info_active_authorizer),
+                            title = stringResource(R.string.home_device_info_active_authorizer),
                             description = authorizerText,
                             descriptionStyle = MaterialTheme.typography.bodyMedium.copy(
                                 fontFamily = if (isCustomizeAuthorizer && uiState.customizeAuthorizer.isNotBlank()) {
